@@ -46,11 +46,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     console.log(`'beforeinstallprompt' event was fired.`);
 });
 
-// Déclenchez l'installation (par exemple, en réponse à un clic sur un bouton)
-document.getElementById('bouton-installation').addEventListener('click', (e) => {
-    e.preventDefault();
-    deferredPrompt.prompt();
-});
+
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", function() {
         navigator.serviceWorker
