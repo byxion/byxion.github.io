@@ -28,13 +28,22 @@ const showPhones = () => {
 
 document.addEventListener("DOMContentLoaded", showPhones)
 
-// Gérez l'événement beforeinstallprompt
+// Initialize deferredPrompt for use later to show browser install prompt.
 let deferredPrompt;
 
+function showInstallPromotion() {
+
+}
+
 window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
     e.preventDefault();
+    // Stash the event so it can be triggered later.
     deferredPrompt = e;
-    // Affichez un bouton ou une indication visuelle pour permettre à l'utilisateur de déclencher l'installation.
+    // Update UI notify the user they can install the PWA
+    showInstallPromotion();
+    // Optionally, send analytics event that PWA install promo was shown.
+    console.log(`'beforeinstallprompt' event was fired.`);
 });
 
 // Déclenchez l'installation (par exemple, en réponse à un clic sur un bouton)
