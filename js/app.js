@@ -17,7 +17,7 @@ const showPhones = () => {
         ({ name, image }) =>
             (output += `
               <div class="card">
-                <img class="card--avatar" src=${image} />
+                <img class="card--avatar" src=${image} alt="phone" />
                 <h1 class="card--title">${name}</h1>
                 <a class="card--link" href="#">Technology</a>
               </div>
