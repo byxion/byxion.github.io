@@ -28,6 +28,20 @@ const showPhones = () => {
 
 document.addEventListener("DOMContentLoaded", showPhones)
 
+// Gérez l'événement beforeinstallprompt
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    // Affichez un bouton ou une indication visuelle pour permettre à l'utilisateur de déclencher l'installation.
+});
+
+// Déclenchez l'installation (par exemple, en réponse à un clic sur un bouton)
+document.getElementById('bouton-installation').addEventListener('click', (e) => {
+    e.preventDefault();
+    deferredPrompt.prompt();
+});
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", function() {
         navigator.serviceWorker
