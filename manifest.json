@@ -1,7 +1,7 @@
 {
   "name": "Phone store",
   "short_name": "PhoneStore",
-  "start_url": "index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#fdfdfd",
   "theme_color": "#db4938",
