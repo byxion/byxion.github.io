@@ -1,0 +1,223 @@
+.container-all {
+  background-color: var(--main-bg-color);
+}
+
+.container-all > .title {
+  color: var(--main-text-color);
+}
+
+/* Put scrollbar at 0 */
+::-webkit-scrollbar {
+  width: 0;
+}
+.scroll {
+  overflow: hidden;
+  height: calc(100vh - 8rem);
+  overflow-y: scroll;
+  border: 1px solid var(--main-text-color);
+  width: 90%;
+}
+
+h2 {
+  color: var(--main-text-color);
+  margin: 10vw 0 5vw 0;
+}
+
+.allsae > h2:nth-child(1) {
+  margin-top: 0;
+}
+
+.title {
+  font-family: "Source Code Pro", sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 500;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.allcompetences {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  margin-top: clamp(1rem, 2.5vw, 2rem);
+}
+
+.sae {
+  height: 100%;
+  width: 100%;
+  background-color: var(--main-text-color);
+}
+
+section.allsae {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sem1,
+.sem2,
+.sem3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sae {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--main-bg-color);
+  height: calc(100vh - 8rem);
+}
+
+.sae .sujet {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--main-text-color);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.sae .sujet,
+.sae .image {
+  width: 45%;
+}
+
+.sae img {
+  width: 100%;
+  height: clamp(15rem, 30vw, 25rem);
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.sae .title {
+  flex-direction: column;
+  row-gap: 0.5rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: 1rem;
+  padding: 0;
+  text-align: center;
+}
+
+.sae .title :nth-child(2) {
+  font-size: clamp(0.75rem, 1.75vw, 1.25rem);
+  font-weight: 400;
+  color: var(--second-text-color);
+}
+
+p {
+  font-family: "Source Code Pro", sans-serif;
+  font-size: clamp(0.75rem, 1.75vw, 1.25rem);
+  font-weight: 400;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 750px) {
+  section.allsae {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* BUTTON */
+button {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: 1px solid rgb(61, 106, 255);
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  background: transparent;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgb(61, 106, 255);
+  box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+button:hover::before {
+  -webkit-animation: sh02 0.5s 0s linear;
+  -moz-animation: sh02 0.5s 0s linear;
+  animation: sh02 0.5s 0s linear;
+}
+
+button::before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+button:active {
+	box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: box-shadow 0.2s ease-in;
+  -moz-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
+}
+
+.toCV {
+  margin: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+@media screen and (max-width: 750px) {
+  .sae {
+    flex-direction: column;
+  }
+
+  .sae .sujet,
+  .sae .image {
+    width: 90%;
+  }
+  
+}

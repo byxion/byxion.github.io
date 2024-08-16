@@ -1,0 +1,523 @@
+/* inspiration (grosse) : https://cv-market.fr/products/cv-designer */
+
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  --couleur1: black;
+  --couleur2: rgb(245, 245, 245);
+  --couleur3: rgb(220, 220, 220);
+  --couleur4: rgb(105, 105, 105);
+}
+body {
+  display: flex;
+  justify-content: center; /* Centrer le CV au milieu de la fenetre */
+  background-color: darkgray;
+}
+/* ********************* GRID DE LA PAGE ******************* */
+
+.container {
+  width: 60vw;
+  background-color: var(--couleur3);
+  display: grid;
+  grid-template-columns: 20vw 40vw; /* Permet de faire deux colonnes (une de 20% de la fenetre et l'autre de 40% de la fenetre) */
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header"
+    "aside main"
+    "footer footer";
+  box-shadow: 5px 5px 14px 10px rgba(0, 0, 0, 0.63);
+  margin: 20px 0 20px 0;
+  font-family: "Titillium Web", sans-serif;
+}
+
+header {
+  grid-area: header; /* Pour savoir dans le grid-templates-areas */
+}
+aside {
+  grid-area: aside;
+}
+main.cv {
+  grid-area: main;
+}
+footer {
+  grid-area: footer;
+}
+
+/* ------------------- HEADER - NOM ------------------ */
+header {
+  height: 150px;
+  background-color: var(--couleur1);
+  color: var(--couleur2);
+  display: flex;
+  justify-content: center; /* Permet de centrer horizontalement */
+  align-items: center; /* Permet de centrer verticalement */
+}
+
+h1 {
+  margin-bottom: 25px;
+}
+
+h1 + div {
+  position: absolute;
+  margin-top: 70px;
+  border-color: var(--couleur2);
+  border-width: 1px;
+  border-style: solid;
+  padding: 5px;
+  z-index: 1; /* Pour que le trait passe derrière la div */
+}
+
+#Trait {
+  position: absolute; /* Permet d'ajouter le trait sans qu'il soit "compris" dans le flex (que ça ne casse pas tout) */
+  margin-top: 70px;
+  border-top: 1px solid var(--couleur2);
+  width: 40vw; /* Pour que la largeur soit de 40% de la fenetre */
+}
+
+header div {
+  background-color: black; /* De base la couleur est transparent donc on voit quand même le trait */
+}
+/* ------------------------- FIN HEADER -------------------------- */
+
+/* -------------------------- ASIDE INFO PERSO ------------------------ */
+aside {
+  background-color: var(--couleur3);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Permet de centrer horizontalement car le flex direction est en column */
+  margin: 20px;
+}
+
+#Photo {
+  border-radius: 50%; /* Arrondir la photo */
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+article + article {
+  width: 16vw;
+}
+
+aside article {
+  margin-top: 25px;
+}
+
+aside article h2 {
+  margin-bottom: 8px;
+}
+
+#break {
+  word-break: break-all; /* Faire que l'adresse mail puisse se "couper" si largeur d'écran trop bas */
+}
+
+.Personnel span {
+  border-top: 2px solid; /* Fait les traits entre les lignes dans le aside */
+}
+
+/* *************** PERSONNEL ************ */
+.Personnel {
+  display: grid;
+  grid-template-columns: 6vw 10vw; /* La 1er colonne des "question" (Nom) fait 6% de la taille de la fenetre et la 2e colonne des "réponses" (Mateo ..) fait 10% | 2 colonnes pour que chaque "question" soit en face de sa "réponse" */
+  grid-template-rows: auto; /* J'ai mis ça car je l'ai vu sur internet | sûrement pour ne pas faire de probleme */
+  color: var(--couleur4);
+}
+
+.Nom-Age,
+.Mobile-Mail {
+  color: var(--couleur1);
+}
+
+/* ****************** COMPETENCE ************** */
+#logo {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* Permet de faire 4 colonnes de même taille */
+  grid-template-rows: 1fr 0.5fr 1fr;
+  grid-template-areas:
+    "Voyage . Musique"
+    ". . ."
+    ". Velo .";
+}
+
+.Trait-noir-aside {
+  height: 1px;
+  width: 16vw;
+  background-color: black;
+}
+
+.Image {
+  height: 55px;
+  width: 66px;
+}
+
+.Voyage {
+  grid-area: Voyage; /* Pour savoir dans le grid-templates-areas */
+}
+.Velo {
+  position: relative;
+  grid-area: Velo;
+}
+.Musique {
+  grid-area: Musique;
+}
+
+/* %%%%%%%% AFFICHER LE TEXTE SUR PASSAGE SOURIS %%%%%%%%%% */
+.Voyage:hover .content,
+.Velo:hover .content,
+.Musique:hover .content {
+  opacity: 1;
+  transition: 0.2s; /* Permet de faire apparaître le texte moins rapidement */
+}
+
+.Velo:hover .content {
+  top: -20px;
+}
+
+.content {
+  opacity: 0;
+  position: absolute; /* Pour que le texte ne prenne pas de place sur l'affichage */
+}
+
+.content p {
+  color: var(--couleur4);
+}
+
+/* ******************* LINKEDIN ***************** */
+#linkedin {
+  margin-top: 20px;
+  height: 200px;
+  width: 200px;
+}
+
+#qr-code {
+  display: flex;
+  justify-content: center; /* Centrer l'image horizontalement */
+}
+
+/* ------------------------ FIN ASIDE -------------------------- */
+
+/* ------------------------ MAIN ------------------------- */
+main.cv {
+  padding: 30px;
+  background-color: var(--couleur2);
+}
+
+/* ****************** PROFIL ********************* */
+main.cv section {
+  margin-bottom: 20px;
+}
+
+.Trait-noir-main {
+  margin: 8px 0 12px 0; /* Pour qu'il y ait 8px de margin en top, 0 en right et en left, et 12px de margin en bottom */
+  background-color: var(--couleur1);
+  height: 1px;
+  width: 36vw;
+}
+
+/* *************** EXPERIENCE / FORMATION *************** */
+.Ranger {
+  width: 25vw;
+  margin-left: 7vw;
+}
+
+.Ranger span + p {
+  margin-bottom: 5px;
+  color: var(--couleur4);
+  font-style: italic;
+}
+
+.Ranger p + p {
+  margin-bottom: 25px;
+  color: var(--couleur4);
+}
+
+.Ranger span {
+  position: relative;
+}
+
+.Ranger span::before {
+  /* Fait le triangle de la flèche */
+  content: "";
+  position: absolute;
+  right: calc(100% - 3px + 0.8vw);
+  bottom: calc(50% - 9px);
+  width: 0;
+  height: 0;
+  border-left: 9px solid var(--couleur1);
+  border-top: 11.32px solid transparent;
+  border-bottom: 8.33px solid transparent;
+}
+
+.Ranger span::after {
+  /* Fait le rectangle de la flèche */
+  content: attr(data-year); /* Affiche l'année du sujet */
+  display: flex;
+  width: 45px;
+  height: 20px;
+  right: calc(100% + 6px + 0.8vw);
+  bottom: calc(50% - 9px);
+  position: absolute;
+  background: var(--couleur1);
+  align-items: center;
+  justify-content: center;
+  color: var(--couleur2);
+}
+
+/* ************** COMPETENCES ***************** */
+.Comp-Progress {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Deux colonnes qui ont la même taille */
+  grid-template-rows: repeat(3, 70px);
+}
+
+progress {
+  /* Enlevé apparence de base  */
+  -webkit-appearance: none; /* Enlever l'apparence de base */
+  margin-top: 20px;
+  width: 12vw;
+}
+progress::before {
+  content: attr(data-comp); /* Affiche la competence de la bar */
+}
+
+::-webkit-progress-bar {
+  background-color: var(--couleur3);
+  /* fond de la bar */
+}
+
+::-webkit-progress-value {
+  background-color: var(--couleur1);
+  /* fond du % */
+}
+
+/* ------------------- FIN MAIN ------------------------ */
+
+/* ---------------------- FOOTER ------------------------ */
+footer {
+  padding: 1vh 0 1vh 0;
+  display: flex;
+  justify-content: center; /* Centrer horizontalement */
+  background-color: var(--couleur1);
+  color: var(--couleur4);
+}
+
+.couleur-inversé {
+  color: var(--couleur2);
+}
+
+footer p {
+  word-break: break-all;
+  width: 45vw;
+}
+
+/* ------------------ FIN DU FOOTER ------------------ */
+
+/* ---------------------- RESPONSIVE ------------------------ */
+@media screen and (max-width: 1400px) {
+  .container {
+    width: 80vw;
+    grid-template-columns: 30vw 50vw;
+  }
+
+  #Trait {
+    width: 60vw;
+  }
+
+  article + article {
+    width: 25vw;
+  }
+
+  .Personnel {
+    grid-template-columns: 9vw 16vw;
+  }
+
+  .Trait-noir-aside {
+    width: 25vw;
+  }
+
+  .Trait-noir-main {
+    width: 45vw;
+  }
+
+  .Ranger {
+    width: 35vw;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 90vw;
+    grid-template-columns: 35vw 55vw;
+  }
+
+  article + article {
+    width: 30vw;
+  }
+
+  .Personnel {
+    grid-template-columns: 12vw 18vw;
+  }
+
+  .Trait-noir-aside {
+    width: 30vw;
+  }
+
+  .Trait-noir-main {
+    width: 48vw;
+  }
+
+  .Ranger {
+    width: 40vw;
+  }
+
+  .Comp-Progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+    width: 80%;
+  }
+
+  .Comp-Progress :nth-child(even) {
+    margin-left: 14vw;
+  }
+
+  progress {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .Comp-Progress {
+    margin-bottom: 50px;
+  }
+  #logo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "Voyage . Musique"
+      ". Velo .";
+    grid-gap: 20px;
+  }
+
+  @media screen and (max-width: 700px) {
+    /* FAIRE UNE SEULE COLONNE */
+    .container {
+      width: 100vw;
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+      grid-template-areas:
+        "header"
+        "aside"
+        "main"
+        "footer";
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 45px;
+    }
+
+    aside {
+      width: 100%;
+      margin: 0;
+      padding-top: 20px;
+    }
+
+    aside article,
+    article + article {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 90%;
+      margin-bottom: 20px;
+    }
+
+    .Image {
+      width: 55%;
+      height: 66%;
+    }
+
+    .Personnel {
+      grid-template-columns: 45vw 45vw;
+    }
+    .Trait-noir-aside {
+      width: 90vw;
+    }
+
+    #logo {
+      width: 70vw;
+    }
+
+    .content {
+      position: relative;
+    }
+
+    #logo > div {
+      display: flex;
+      justify-content: center;
+    }
+
+    main.cv {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    main.cv > section {
+      width: 90%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .Trait-noir-main {
+      width: 90vw;
+    }
+
+    .Ranger span::before {
+      border-top: 13.32px solid transparent;
+      border-bottom: 16.33px solid transparent;
+      bottom: calc(50% - 14px);
+      right: calc(100% + 1px + 0.8vw);
+    }
+
+    .Ranger span::after {
+      bottom: calc(50% - 14px);
+      right: calc(100% + 10px + 0.8vw);
+    }
+
+    .Ranger {
+      width: 70vw;
+    }
+
+    .Ranger span::after {
+      width: 60px;
+      height: 30px;
+    }
+
+    footer p {
+      width: 90%;
+      word-break: normal;
+    }
+
+    p {
+      font-size: 15px;
+    }
+
+    span {
+      font-size: 15px;
+    }
+  }
+}
+
+/* ------------------- FIN DU RESPONSIVE -------------------- */
